@@ -17,6 +17,8 @@ body = ""
 notification = None
 
 def displayNotification(s):
+	global summary
+	global body
 	if not s:
 		try:
 			notification.close()
@@ -30,6 +32,7 @@ def displayNotification(s):
 
 
 def check(url):
+	global body
 	res = requests.request('GET', url).text
 	parser = etree.HTMLParser()
 	tree = etree.parse(StringIO(res), parser)
